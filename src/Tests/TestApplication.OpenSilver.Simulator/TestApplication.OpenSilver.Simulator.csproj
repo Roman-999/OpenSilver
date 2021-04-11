@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">SL</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7C4045F2-C593-4176-AE45-352757C32BC5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>TestApplication.OpenSilver.Simulator</RootNamespace>
+    <AssemblyName>TestApplication.OpenSilver.Simulator</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <StartAction>URL</StartAction>
+    <StartURL>http://www.opensilver.net/permalinks/simulator_not_found.aspx</StartURL>
+	<OutputPath>bin\$(Configuration)\</OutputPath>
+    <StartArguments>"..\..\..\TestApplication\bin\OpenSilver\$(Configuration)\netstandard2.0\TestApplication.OpenSilver.dll"</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'SL|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE;OPENSILVER</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'SL.WIP|AnyCPU' ">
+	  <PlatformTarget>AnyCPU</PlatformTarget>
+	  <DebugSymbols>true</DebugSymbols>
+	  <DebugType>full</DebugType>
+	  <Optimize>false</Optimize>
+	  <DefineConstants>DEBUG;TRACE;OPENSILVER</DefineConstants>
+	  <ErrorReport>prompt</ErrorReport>
+	  <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestApplication\TestApplication.OpenSilver.csproj">
+      <Name>TestApplication.OpenSilver</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
