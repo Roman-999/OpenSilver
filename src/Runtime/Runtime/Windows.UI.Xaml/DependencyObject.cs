@@ -410,18 +410,12 @@ namespace Windows.UI.Xaml
         public virtual void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
 #if WORKINPROGRESS
+			// When it is DependencyObject(meaning it isn't FrameworkElement), raise parent's.
+			// This function would be called from DependencyObject RowDefinition and ColumnDefinition
             if (this.InheritedParent != null)
             {
                 this.InheritedParent.OnPropertyChanged(e);
                 return;
-            }
-
-            // logging to find a wrong definition of FrameworkPropertyMetadata.
-            FrameworkPropertyMetadata metadata = e.Property.GetMetadata(GetType()) as FrameworkPropertyMetadata;
-            if (metadata != null)
-            {
-                if (metadata.AffectsMeasure || metadata.AffectsArrange || metadata.AffectsRender || metadata.AffectsParentMeasure)
-                    Console.WriteLine($"DependencyObject OnPropertyChanged {this} {e.Property.Name} {e.OldValue}=>{e.NewValue}");
             }
 #endif
         }

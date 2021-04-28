@@ -199,7 +199,7 @@ namespace Windows.UI.Xaml
             //Console.WriteLine($"Render {domElementReference.UniqueIdentifier} {this} Bounds {VisualBounds.Left}, {VisualBounds.Top}, {VisualBounds.Width}, {VisualBounds.Height}");
             //return;
 
-            if (this as Window == null)
+            if (this as Window == null && this as PopupRoot == null)
             {
                 INTERNAL_HtmlDomStyleReference uiStyle = INTERNAL_HtmlDomManager.GetDomElementStyleForModification((INTERNAL_HtmlDomElementReference)this.INTERNAL_OuterDomElement);
                 uiStyle.position = "absolute";

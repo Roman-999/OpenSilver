@@ -399,7 +399,6 @@ element.setAttribute(""data-acceptsreturn"", ""{1}"");
 
         public override object CreateDomElement(object parentRef, out object domElementWhereToPlaceChildren)
         {
-            Console.WriteLine("CreateDomElement TextBox");
             // Note: we use 3 divs instead of 1 due to the way HorizontalAlignment/VerticalAlignment works in the FrameworkElement class. In fact, if "display" is "Table" or "TableCell", the "contentEditable" attribute does not work properly.
             return AddContentEditableDomElement(parentRef, out domElementWhereToPlaceChildren, false);
         }
