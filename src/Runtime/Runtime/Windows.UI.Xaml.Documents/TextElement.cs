@@ -40,7 +40,7 @@ namespace Windows.UI.Xaml.Documents
         }
 
 #if WORKINPROGRESS
-        public static readonly DependencyProperty CharacterSpacingProperty = DependencyProperty.Register("CharacterSpacing", typeof(int), typeof(TextElement), null);
+        public static readonly DependencyProperty CharacterSpacingProperty = DependencyProperty.Register("CharacterSpacing", typeof(int), typeof(TextElement), new FrameworkPropertyMetadata(FrameworkPropertyMetadataOptions.AffectsMeasure));
         public int CharacterSpacing
         {
             get { return (int)this.GetValue(CharacterSpacingProperty); }

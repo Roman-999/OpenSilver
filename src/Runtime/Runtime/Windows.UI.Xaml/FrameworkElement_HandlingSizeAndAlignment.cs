@@ -105,11 +105,19 @@ namespace Windows.UI.Xaml
         /// <summary>
         /// Identifies the Height dependency property.
         /// </summary>
+#if WORKINPROGRESS
+        public static readonly DependencyProperty HeightProperty =
+            DependencyProperty.Register("Height",
+                                        typeof(double),
+                                        typeof(FrameworkElement),
+                                        new FrameworkPropertyMetadata(double.NaN, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange)
+#else
         public static readonly DependencyProperty HeightProperty =
             DependencyProperty.Register("Height",
                                         typeof(double),
                                         typeof(FrameworkElement),
                                         new PropertyMetadata(double.NaN)
+#endif
                                         {
                                             GetCSSEquivalent = (instance) =>
                                             {
@@ -198,11 +206,19 @@ namespace Windows.UI.Xaml
         /// <summary>
         /// Identifies the Width dependency property.
         /// </summary>
+#if WORKINPROGRESS
+        public static readonly DependencyProperty WidthProperty =
+            DependencyProperty.Register("Width",
+                                        typeof(double),
+                                        typeof(FrameworkElement),
+                                        new FrameworkPropertyMetadata(double.NaN, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange)
+#else
         public static readonly DependencyProperty WidthProperty =
             DependencyProperty.Register("Width",
                                         typeof(double),
                                         typeof(FrameworkElement),
                                         new PropertyMetadata(double.NaN)
+#endif
                                         {
                                             GetCSSEquivalent = (instance) =>
                                             {
@@ -292,11 +308,19 @@ namespace Windows.UI.Xaml
         /// <summary>
         /// Identifies the HorizontalAlignment dependency property.
         /// </summary>
+#if WORKINPROGRESS
+        public static readonly DependencyProperty HorizontalAlignmentProperty =
+            DependencyProperty.Register("HorizontalAlignment",
+                                        typeof(HorizontalAlignment),
+                                        typeof(FrameworkElement),
+                                        new FrameworkPropertyMetadata(HorizontalAlignment.Stretch, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange, HorizontalAlignment_Changed)
+#else
         public static readonly DependencyProperty HorizontalAlignmentProperty =
             DependencyProperty.Register("HorizontalAlignment",
                                         typeof(HorizontalAlignment),
                                         typeof(FrameworkElement),
                                         new PropertyMetadata(HorizontalAlignment.Stretch, HorizontalAlignment_Changed)
+#endif
                                         {
                                             CallPropertyChangedWhenLoadedIntoVisualTree = WhenToCallPropertyChangedEnum.IfPropertyIsSet
                                         });
@@ -682,11 +706,19 @@ if ($0.tagName.toLowerCase() != 'span')
         /// <summary>
         /// Identifies the VerticalAlignment dependency property.
         /// </summary>
+#if WORKINPROGRESS
+        public static readonly DependencyProperty VerticalAlignmentProperty =
+            DependencyProperty.Register("VerticalAlignment",
+                                        typeof(VerticalAlignment),
+                                        typeof(FrameworkElement),
+                                        new FrameworkPropertyMetadata(VerticalAlignment.Stretch, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange, VerticalAlignment_Changed)
+#else
         public static readonly DependencyProperty VerticalAlignmentProperty =
             DependencyProperty.Register("VerticalAlignment",
                                         typeof(VerticalAlignment),
                                         typeof(FrameworkElement),
                                         new PropertyMetadata(VerticalAlignment.Stretch, VerticalAlignment_Changed)
+#endif
                                         {
                                             CallPropertyChangedWhenLoadedIntoVisualTree = WhenToCallPropertyChangedEnum.IfPropertyIsSet
                                         });
@@ -1093,11 +1125,19 @@ if ($0.tagName.toLowerCase() != 'span')
         /// <summary>
         /// Identifies the Margin dependency property.
         /// </summary>
+#if WORKINPROGRESS
+        public static readonly DependencyProperty MarginProperty =
+            DependencyProperty.Register("Margin",
+                                        typeof(Thickness),
+                                        typeof(FrameworkElement),
+                                        new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange)
+#else
         public static readonly DependencyProperty MarginProperty =
             DependencyProperty.Register("Margin",
                                         typeof(Thickness),
                                         typeof(FrameworkElement),
                                         new PropertyMetadata(new Thickness())
+#endif
                                         {
                                             MethodToUpdateDom = Margin_MethodToUpdateDom,
                                         });
@@ -1224,11 +1264,19 @@ if ($0.tagName.toLowerCase() != 'span')
         /// <summary>
         /// Identifies the MinHeight dependency property.
         /// </summary>
+#if WORKINPROGRESS
+        public static readonly DependencyProperty MinHeightProperty =
+            DependencyProperty.Register("MinHeight",
+                                        typeof(double),
+                                        typeof(FrameworkElement),
+                                        new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange, MinHeight_Changed)
+#else
         public static readonly DependencyProperty MinHeightProperty =
             DependencyProperty.Register("MinHeight",
                                         typeof(double),
                                         typeof(FrameworkElement),
                                         new PropertyMetadata(0d, MinHeight_Changed)
+#endif
                                         { 
                                             CallPropertyChangedWhenLoadedIntoVisualTree = WhenToCallPropertyChangedEnum.IfPropertyIsSet 
                                         });
@@ -1266,11 +1314,19 @@ if ($0.tagName.toLowerCase() != 'span')
         /// <summary>
         /// Identifies the MinWidth dependency property.
         /// </summary>
+#if WORKINPROGRESS
         public static readonly DependencyProperty MinWidthProperty =
             DependencyProperty.Register("MinWidth",
                                         typeof(double),
                                         typeof(FrameworkElement),
+                                        new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange, MinWidth_Changed)
+#else
+    public static readonly DependencyProperty MinWidthProperty =
+            DependencyProperty.Register("MinWidth",
+                                        typeof(double),
+                                        typeof(FrameworkElement),
                                         new PropertyMetadata(0d, MinWidth_Changed)
+#endif
                                         {
                                             CallPropertyChangedWhenLoadedIntoVisualTree = WhenToCallPropertyChangedEnum.IfPropertyIsSet
                                         });
@@ -1305,11 +1361,19 @@ if ($0.tagName.toLowerCase() != 'span')
         /// <summary>
         /// Identifies the MaxHeight dependency property.
         /// </summary>
+#if WORKINPROGRESS
+        public static readonly DependencyProperty MaxHeightProperty =
+            DependencyProperty.Register("MaxHeight",
+                                        typeof(double),
+                                        typeof(FrameworkElement),
+                                        new FrameworkPropertyMetadata(double.PositiveInfinity, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange, MaxHeight_Changed)
+#else
         public static readonly DependencyProperty MaxHeightProperty =
             DependencyProperty.Register("MaxHeight",
                                         typeof(double),
                                         typeof(FrameworkElement),
                                         new PropertyMetadata(double.PositiveInfinity, MaxHeight_Changed)
+#endif
                                         {
                                             CallPropertyChangedWhenLoadedIntoVisualTree = WhenToCallPropertyChangedEnum.IfPropertyIsSet
                                         });
@@ -1347,11 +1411,19 @@ if ($0.tagName.toLowerCase() != 'span')
         /// <summary>
         /// Identifies the MaxWidth dependency property.
         /// </summary>
+#if WORKINPROGRESS
         public static readonly DependencyProperty MaxWidthProperty =
             DependencyProperty.Register("MaxWidth",
                                         typeof(double),
                                         typeof(FrameworkElement),
+                                        new FrameworkPropertyMetadata(double.PositiveInfinity, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange, MaxWidth_Changed)
+#else
+    public static readonly DependencyProperty MaxWidthProperty =
+            DependencyProperty.Register("MaxWidth",
+                                        typeof(double),
+                                        typeof(FrameworkElement),
                                         new PropertyMetadata(double.PositiveInfinity, MaxWidth_Changed)
+#endif
                                         {
                                             CallPropertyChangedWhenLoadedIntoVisualTree = WhenToCallPropertyChangedEnum.IfPropertyIsSet
                                         });

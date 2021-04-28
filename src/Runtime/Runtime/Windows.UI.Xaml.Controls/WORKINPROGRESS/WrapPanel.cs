@@ -30,11 +30,19 @@ namespace Windows.UI.Xaml.Controls
 		// Returns:
 		//     The identifier for the System.Windows.Controls.WrapPanel.ItemHeight  dependency
 		//     property.
-		public static readonly DependencyProperty ItemHeightProperty =
+#if WORKINPROGRESS
+	public static readonly DependencyProperty ItemHeightProperty =
+		DependencyProperty.Register("ItemHeight",
+										typeof(double),
+										typeof(WrapPanel),
+										new FrameworkPropertyMetadata(double.NaN, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange));
+#else
+	public static readonly DependencyProperty ItemHeightProperty =
 			DependencyProperty.Register("ItemHeight",
 										typeof(double),
 										typeof(WrapPanel),
 										new PropertyMetadata(double.NaN));
+#endif
 
 		//
 		// Summary:
@@ -56,12 +64,19 @@ namespace Windows.UI.Xaml.Controls
 		// Returns:
 		//     The identifier for the System.Windows.Controls.WrapPanel.ItemWidth  dependency
 		//     property.
+#if WORKINPROGRESS
 		public static readonly DependencyProperty ItemWidthProperty =
+		DependencyProperty.Register("ItemWidth",
+										typeof(double),
+										typeof(WrapPanel),
+										new FrameworkPropertyMetadata(double.NaN, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange));
+#else
+	public static readonly DependencyProperty ItemWidthProperty =
 			DependencyProperty.Register("ItemWidth",
 										typeof(double),
 										typeof(WrapPanel),
 										new PropertyMetadata(double.NaN));
-
+#endif
 		private void MeasureChild(UIElement child, double availableMainLength, double availableCrossLength)
 		{
 			child.Measure(Orientation == Orientation.Horizontal ?

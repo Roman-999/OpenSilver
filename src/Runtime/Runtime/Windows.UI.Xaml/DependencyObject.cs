@@ -409,8 +409,21 @@ namespace Windows.UI.Xaml
 
         public virtual void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
-            //
-            //Console.WriteLine($"DependencyObject OnPropertyChanged {e.Property.Name} {e.OldValue}=>{e.NewValue}");
+#if WORKINPROGRESS
+            if (this.InheritedParent != null)
+            {
+                this.InheritedParent.OnPropertyChanged(e);
+                return;
+            }
+
+            // logging to find a wrong definition of FrameworkPropertyMetadata.
+            FrameworkPropertyMetadata metadata = e.Property.GetMetadata(GetType()) as FrameworkPropertyMetadata;
+            if (metadata != null)
+            {
+                if (metadata.AffectsMeasure || metadata.AffectsArrange || metadata.AffectsRender || metadata.AffectsParentMeasure)
+                    Console.WriteLine($"DependencyObject OnPropertyChanged {this} {e.Property.Name} {e.OldValue}=>{e.NewValue}");
+            }
+#endif
         }
 
         internal void SetLocalStyleValue(DependencyProperty dp, object value)

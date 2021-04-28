@@ -54,7 +54,7 @@ namespace Windows.UI.Xaml.Controls
                 "FontSize",
                 typeof(double),
                 typeof(RichTextBlock),
-                new PropertyMetadata(11d));
+                new FrameworkPropertyMetadata(11d, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         /// <summary>
         /// Gets or sets the size of the text in this control.
@@ -74,7 +74,7 @@ namespace Windows.UI.Xaml.Controls
                 "FontWeight",
                 typeof(FontWeight),
                 typeof(RichTextBlock),
-                new PropertyMetadata(FontWeights.Normal));
+                new FrameworkPropertyMetadata(FontWeights.Normal, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         /// <summary>
         /// Gets or sets the thickness of the specified font.
@@ -94,7 +94,7 @@ namespace Windows.UI.Xaml.Controls
                 "FontFamily",
                 typeof(FontFamily),
                 typeof(RichTextBlock),
-                new PropertyMetadata((object)null));
+                new FrameworkPropertyMetadata((object)null, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         /// <summary>
         /// Gets or sets the font used to display text in the control.
@@ -131,7 +131,7 @@ namespace Windows.UI.Xaml.Controls
                 "TextWrapping",
                 typeof(TextWrapping),
                 typeof(RichTextBlock),
-                new PropertyMetadata(TextWrapping.Wrap));
+                new FrameworkPropertyMetadata(TextWrapping.Wrap, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         /// <summary>
         /// Gets or sets how text wrapping occurs if a line of text extends beyond the available
@@ -152,7 +152,7 @@ namespace Windows.UI.Xaml.Controls
                 "LineHeight",
                 typeof(double),
                 typeof(RichTextBlock),
-                new PropertyMetadata(0d));
+                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         /// <summary>
         ///  Gets or sets the height of each line of content.

@@ -195,6 +195,10 @@ namespace Windows.UI.Xaml
 
         private void Render()
         {
+            //INTERNAL_HtmlDomElementReference domElementReference = (INTERNAL_HtmlDomElementReference)this.INTERNAL_OuterDomElement;
+            //Console.WriteLine($"Render {domElementReference.UniqueIdentifier} {this} Bounds {VisualBounds.Left}, {VisualBounds.Top}, {VisualBounds.Width}, {VisualBounds.Height}");
+            //return;
+
             if (this as Window == null)
             {
                 INTERNAL_HtmlDomStyleReference uiStyle = INTERNAL_HtmlDomManager.GetDomElementStyleForModification((INTERNAL_HtmlDomElementReference)this.INTERNAL_OuterDomElement);
@@ -266,17 +270,6 @@ namespace Windows.UI.Xaml
             }
         }
 
-        public void ClearArrangeValid()
-        {
-            IsArrangeValid = false;
-
-            IEnumerable<DependencyObject> childElements = VisualTreeExtensions.GetVisualChildren(this);
-            foreach (DependencyObject children in childElements)
-            {
-                ((UIElement)children).ClearArrangeValid();
-            }
-        }
-
         public void InvalidateArrange()
         {
             if (!IsArrangeValid)
@@ -284,7 +277,7 @@ namespace Windows.UI.Xaml
                 return;
             }
 
-            ClearArrangeValid();
+            IsArrangeValid = false;
 
             LayoutManager.Current.AddArrange(this);
         }
@@ -296,17 +289,6 @@ namespace Windows.UI.Xaml
             }
         }
 
-        public void ClearMeasureValid()
-        {
-            IsMeasureValid = false;
-
-            IEnumerable<DependencyObject> childElements = VisualTreeExtensions.GetVisualChildren(this);
-            foreach (DependencyObject children in childElements)
-            {
-                ((UIElement)children).ClearMeasureValid();
-            }
-        }
-
         public void InvalidateMeasure()
         {
             if (disableMeasureInvalidationRequests > 0 || !IsMeasureValid)
@@ -314,7 +296,7 @@ namespace Windows.UI.Xaml
                 return;
             }
 
-            ClearMeasureValid();
+            IsMeasureValid = false;
 
             LayoutManager.Current.AddMeasure(this);
         }
